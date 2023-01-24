@@ -4,7 +4,7 @@ SELECT *
 FROM PortfolioProject.dbo.NashvilleHousing
 
 
---Standaardise date format
+--Standardise date format
 
 SELECT SaleDateConverted, CONVERT(date, SaleDate) 
 FROM PortfolioProject.dbo.NashvilleHousing
