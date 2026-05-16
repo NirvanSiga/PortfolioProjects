@@ -1,0 +1,176 @@
+British Airways Reviews Analysis Dashboard
+Project Overview
+This project is an interactive Tableau dashboard built to analyze customer reviews and passenger experience data for British Airways flights. The dashboard consolidates review metrics, customer feedback, traveler demographics, and service ratings to identify trends in customer satisfaction and operational performance.
+The project demonstrates practical data analytics skills including:
+•	Data cleaning and transformation
+•	Exploratory data analysis (EDA)
+•	Dashboard development in Tableau
+•	KPI analysis and visualization
+•	Customer sentiment and service performance analysis
+•	Geographic and trend-based reporting
+________________________________________
+Objective
+The primary goal of this project is to:
+•	Analyze customer review patterns across different flight and traveler categories
+•	Evaluate airline service quality metrics
+•	Identify strengths and weaknesses in passenger experience
+•	Provide actionable business recommendations based on customer feedback
+•	Build an interactive business intelligence dashboard for decision-making
+________________________________________
+Dashboard Preview
+Key Dashboard Sections
+•	Overall customer satisfaction summary
+•	Aircraft-wise performance analysis
+•	Monthly review trend analysis
+•	Geographic distribution of customer reviews
+•	KPI comparison across traveler types and seat categories
+________________________________________
+Dataset Overview
+The dashboard uses airline review data combined with country-level geographic information.
+Main Dataset: ba_reviews.csv
+Contains customer reviews and airline service ratings.
+Data Structure
+Column Name	Description	Data Type
+Author	Review author/customer	String
+Date	Review submission date	Date
+Place	Customer location	String
+Content	Customer review text	String
+Aircraft	Aircraft model used	String
+Traveller Type	Type of traveler (Business, Family, Solo, etc.)	String
+Seat Type	Cabin class (Economy, Business, First Class, etc.)	String
+Route	Flight route	String
+Date Flown	Flight travel date	Date
+Recommended	Whether the customer recommends the airline	String
+Trip Verified	Whether the review was verified	String
+Rating	Overall customer rating	Integer
+Seat Comfort	Seat comfort score	Integer
+Cabin Staff Service	Cabin crew service rating	Integer
+Food Beverages	Food and beverage rating	Integer
+Ground Service	Airport/ground support rating	Integer
+Entertainment	In-flight entertainment rating	Integer
+Value For Money	Customer value perception rating	Integer
+________________________________________
+Supporting Dataset: Countries.csv
+Used for geographic mapping and regional analysis.
+Geographic Fields
+•	Country
+•	Country Code
+•	Region
+•	Continent
+________________________________________
+Tools & Technologies
+Tool	Purpose
+Tableau	Dashboard creation and visualization
+CSV Files	Data storage
+Data Cleaning Techniques	Handling missing values and formatting
+Calculated Fields	KPI and metric generation
+Geographic Mapping	Country-level analysis
+________________________________________
+Dashboard Features
+1. Summary Analysis
+Provides a high-level overview of:
+•	Overall customer ratings
+•	Recommendation percentage
+•	Average service scores
+•	KPI comparisons
+Metrics Included
+•	Overall Rating
+•	Seat Comfort
+•	Cabin Staff Service
+•	Food & Beverages
+•	Ground Service
+•	Entertainment
+•	Value for Money
+________________________________________
+2. Aircraft Performance Analysis
+Analyzes customer satisfaction across different aircraft models.
+Business Insights
+•	Identifies aircraft associated with higher satisfaction
+•	Helps evaluate operational consistency
+•	Supports fleet improvement decisions
+________________________________________
+3. Monthly Trend Analysis
+Tracks customer ratings over time.
+Analysis Objectives
+•	Detect seasonal trends
+•	Identify periods of declining customer satisfaction
+•	Monitor operational performance over time
+________________________________________
+4. Geographic Analysis
+Interactive map visualizing customer review distribution by country and region.
+Insights Generated
+•	Regions with highest review activity
+•	Geographic variations in customer satisfaction
+•	International customer engagement patterns
+________________________________________
+Data Cleaning & Preparation
+Several preprocessing steps were performed before visualization:
+Cleaning Activities
+•	Standardized column names
+•	Converted date columns into proper date format
+•	Handled missing/null values
+•	Categorized traveler and seat types
+•	Validated rating scales
+•	Removed inconsistent records where necessary
+Data Modeling
+•	Joined review data with country mapping data
+•	Created calculated fields for KPI selection and comparisons
+•	Built dynamic parameter-driven metrics in Tableau
+________________________________________
+Key Insights
+Customer Experience Insights
+•	Cabin staff service and seat comfort strongly influence overall ratings.
+•	Value for money ratings often vary significantly across traveler types.
+•	Some aircraft models consistently receive higher customer satisfaction scores.
+•	Verified reviews provide more reliable indicators of operational performance.
+Operational Insights
+•	Customer sentiment changes across different months and travel periods.
+•	Geographic analysis highlights regions with stronger or weaker customer perception.
+•	Premium seat categories generally show higher satisfaction metrics.
+________________________________________
+Recommendations
+Service Quality Improvements
+•	Improve consistency in food and beverage quality.
+•	Focus on enhancing ground service experience during peak travel periods.
+•	Use customer feedback trends to prioritize operational improvements.
+Customer Retention Strategy
+•	Monitor recommendation percentages regularly.
+•	Improve low-performing routes and aircraft experiences.
+•	Personalize services based on traveler type segmentation.
+Business Intelligence Enhancements
+•	Integrate sentiment analysis on review text for deeper insights.
+•	Add predictive analytics to forecast customer satisfaction trends.
+•	Include real-time operational data for live dashboard monitoring.
+________________________________________
+Skills Demonstrated
+This project highlights several core data analyst competencies:
+Data Analytics Skills
+•	Data cleaning and transformation
+•	KPI development
+•	Trend analysis
+•	Customer behavior analysis
+•	Business insight generation
+Tableau Skills
+•	Interactive dashboard design
+•	Parameter-driven visualizations
+•	Geographic mapping
+•	Calculated fields
+•	Dashboard storytelling
+•	Filter and drill-down functionality
+Business Intelligence Skills
+•	Translating business questions into analytics solutions
+•	Communicating insights visually
+•	Performance monitoring and reporting
+•	Recommendation-driven analysis
+________________________________________
+Project Outcomes
+The dashboard enables stakeholders to:
+•	Monitor customer satisfaction efficiently
+•	Identify service gaps
+•	Compare operational performance across dimensions
+•	Support data-driven business decisions
+•	Improve overall passenger experience
+________________________________________
+Conclusion
+This Tableau project demonstrates how customer review data can be transformed into actionable business intelligence through interactive dashboards and analytical storytelling. The dashboard provides valuable operational and customer experience insights that can support strategic airline decision-making and service optimization.
+
