@@ -1,0 +1,54 @@
+Customer Segmentation Using RFM Analysis
+BigQuery · SQL · Customer Analytics · BI-Ready Output
+
+Project Overview
+This project implements an end-to-end RFM (Recency, Frequency, Monetary) customer segmentation pipeline in Google BigQuery using SQL. It consolidates 12 months of transactional sales data, computes behavioural metrics for each customer, scores them on a 1–10 scale across three dimensions, and classifies them into eight actionable business segments. The final output is a BI-ready table designed for direct integration with dashboards and marketing workflows.
+Data Structure & Pipeline
+Source Data
+The pipeline ingests twelve monthly sales tables (sales202501 through sales202512) stored in the rfm2403.sales BigQuery dataset. Each table shares a consistent schema, with the key fields:
+•	CustomerID — unique customer identifier
+•	OrderID — unique order identifier
+•	OrderDate — transaction date (mixed formats: YYYY-MM-DD and MM/DD/YYYY)
+•	OrderValue — revenue generated per transaction
+Transformation Stages
+The pipeline is structured across four SQL transformation layers:
+•	Stage 1 — Data Consolidation: All monthly tables are unified into a single sales_2025 table using UNION ALL. A SAFE.PARSE_DATE pattern with COALESCE handles both inconsistent date formats, ensuring clean DATE-typed values downstream.
+•	Stage 2 — RFM Metric Calculation (rfm_metrics view): Recency is computed as the number of days between each customer's last purchase and the analysis date (2026-03-24). Frequency counts total orders per customer. Monetary sums total spend. Window functions (ROW_NUMBER) rank all customers on each dimension.
+•	Stage 3 — Scoring (rfm_scores view): NTILE(10) is applied to each rank, assigning a score from 1 (lowest) to 10 (highest) for R, F, and M independently.
+•	Stage 4 — Segmentation (rfm_segments_final table): Individual scores are summed into an rfm_total_score (range: 3–30), and customers are classified into one of eight named segments via a CASE expression.
+
+Segmentation Framework
+The eight segments and their score thresholds are as follows:
+Segment	RFM Score	Description
+Champion	≥ 28	Highly recent, frequent, and high-spending customers — core revenue drivers.
+Loyal VIP	24–27	Consistently engaged, high-value customers with strong retention potential.
+Potential VIP	20–23	Showing VIP-like behaviour; ripe for upselling and loyalty programmes.
+Very Promising	16–19	Growing customers with solid engagement; nurture to move them up.
+Engaged	12–15	Active but mid-tier; benefit from targeted offers to deepen loyalty.
+Requires Attention	8–11	Declining engagement; re-engagement campaigns recommended.
+At Risk	4–7	Significant drop in activity; high churn risk requiring immediate action.
+Lost/Inactive	< 4	Likely churned; evaluate cost-benefit before investing in win-back.
+
+Key Analytical Insights
+The RFM model surfaces several meaningful patterns about customer behaviour:
+•	High-value customers are identifiable without revenue alone: A customer with moderate spend but very high frequency and recency scores will outrank a one-time high spender — more accurately reflecting long-term value.
+•	NTILE(10) scoring normalises the customer base relative to itself, making the segmentation robust to data skew or outliers in absolute spend values.
+•	The composite score (rfm_total_score) compresses three dimensions into a single, interpretable metric that is easy for non-technical stakeholders to act on.
+•	Segment boundaries (e.g., Champion at ≥ 28) are intentionally tiered to create natural breaks, ensuring each tier contains a meaningful and distinct subset of the customer base.
+•	The analysis date is parameterised as a CTE (current_date), making it straightforward to rerun the model on any future date without modifying core logic.
+
+Business Recommendations
+The segmentation output enables targeted, cost-efficient customer strategies:
+•	Champions & Loyal VIPs: Prioritise retention through exclusive rewards, early access, and loyalty programmes. These customers drive disproportionate revenue and referrals.
+•	Potential VIPs & Very Promising: Invest in upsell campaigns and personalised communications. These segments have demonstrated engagement and are most likely to respond to nudges toward higher tiers.
+•	Engaged & Requires Attention: Deploy reactivation flows (e.g., time-limited discount codes or personalised product recommendations) before engagement deteriorates further.
+•	At Risk: Trigger automated win-back sequences with strong incentives. Analyse common drop-off patterns to identify product or service issues.
+•	Lost/Inactive: Conduct cost-benefit analysis before investing in win-back. Consider low-cost channels (email) and suppress from high-cost paid campaigns.
+
+Technical Summary
+Platform	Google BigQuery
+Language	SQL (BigQuery Standard SQL dialect)
+Techniques	CTEs, window functions (ROW_NUMBER, NTILE), UNION ALL, SAFE.PARSE_DATE
+Output	BI-ready BigQuery table (rfm_segments_final), queryable by any connected BI tool
+Data Volume	12 months of transactional data across 12 source tables
+
